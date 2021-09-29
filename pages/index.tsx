@@ -9,7 +9,7 @@ export default function Home() {
       </Head>
 
 
-      <h1>Dream Journal II</h1>
+      <h1 className='text-3xl'>Dream Journal II</h1>
     </div>
   )
 }
