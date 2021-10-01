@@ -1,15 +1,11 @@
-import Link from 'next/link'
+import NavLink from './NavLink'
 
 const Nav = () => {
     return (
-        <nav >
-            <ul className='flex justify-around p-1'>
-                <li>
-                    <Link href='/'>Home</Link>
-                </li>
-                <li>
-                    <Link href='/about'>About</Link>
-                </li>
+        <nav className='border-b'>
+            <ul className='flex justify-around'>
+                <NavLink href='/'>Home</NavLink>
+                <NavLink href='/about'>About</NavLink>
             </ul>
         </nav>
     )
