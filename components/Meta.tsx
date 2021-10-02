@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 // look up next/seo package
-const Meta = ({title, keywords,description}) => {
+const Meta = ({title, keywords,description}: {title:string, keywords:string, description:string}) => {
     return (
         <Head>
             <meta name='viewport'

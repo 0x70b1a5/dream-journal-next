@@ -8,10 +8,11 @@ export const DreamListItem = ({ dream }) => {
             max-w-md'>
             <Link href='/dream/[id]' as={`/dream/${dream.id}`}>
                 <a>
-                    <h3>
-                        {dream.title} &rarr;
-                        <p>{dream.excerpt}</p>
+                    <h3 className='text-xl'>
+                        {dream.title}
+                        <span className='text-sm ml-2'>{dream.date}</span> &rarr;
                     </h3>
+                    <p>{dream.excerpt}</p>
                 </a>
             </Link>
 

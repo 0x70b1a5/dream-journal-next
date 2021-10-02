@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { GetStaticProps } from 'next'
 import { DreamList } from '../components/DreamList'
 import {server} from '../config'
 
@@ -29,8 +29,8 @@ export default function Home({ dreams }) {
 // }
 
 
-export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/dreams`)
+export const getStaticProps: GetStaticProps = async (context) => {
+  const res: Response = await fetch(`${server}/api/dreams`)
   const dreams = await res.json()
 
   return {

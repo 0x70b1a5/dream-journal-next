@@ -1,5 +1,5 @@
-import {dreams } from '../../../data'
+import {getSortedDreamsData} from '../../../lib/dreams'
 
 export default function handler(req, res) {
-    res.status(200).json(dreams)
+    res.status(200).json(getSortedDreamsData())
 }

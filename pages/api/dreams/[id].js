@@ -1,7 +1,7 @@
-import {dreams } from '../../../data'
+import {getSortedDreamsData} from '../../../lib/dreams'
 
 export default function handler({ query: { id }}, res) {
-    const filtered = dreams.filter(dream => dream.id.toString() === id)    
+    const filtered = getSortedDreamsData().filter(dream => dream.id.toString() === id)    
 
     if (filtered.length > 0) {
         res.status(200).json(filtered[0])
