@@ -3,8 +3,6 @@ import { DreamList } from '../components/DreamList'
 import {server} from '../config'
 
 export default function Home({ dreams }) {
-  console.log(dreams)
-
   return (
     <div>
       <h2 className='text-2xl'>

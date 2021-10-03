@@ -1,24 +1,35 @@
-import {useRouter} from 'next/router'
-import Link from 'next/Link'
-import {server} from '../../../config'
-import Meta from '../../../components/Meta'
+import Link from 'next/link'
+import {server} from '../../config'
+import Meta from '../../components/Meta'
+import {remark} from 'remark'
+import rHtml from 'remark-html'
+import Date from '../../components/Date'
 
 const dream = ({ dream }) => {
-    // const router = useRouter()
-    // const {id} = router.query 
-    
     return <>
         <Meta title={dream.title} description={dream.excerpt} />
-        <h2 className='text-2xl'>{dream.title}</h2>
-        <p>{dream.body}</p>
+        <h2 className='text-2xl'>
+            {dream.title} 
+            <span className='text-sm ml-3'>
+                <Date dateString={dream.date} />
+            </span>
+        </h2>
+        <div dangerouslySetInnerHTML={{ __html: dream.body }} />
         <br/>
         <Link href='/'>&larr; Back</Link>
     </>
 }
+
 export const getStaticProps = async (context) => {
     const res = await fetch(`${server}/api/dreams/${context.params.id}`)
 
     const dream = await res.json()
+    remark()
+        .use(rHtml)
+        .process(dream.body)
+        .then(file => {
+            dream.body = String(file)
+        })
 
     return {
         props: {
